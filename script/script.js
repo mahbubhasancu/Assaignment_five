@@ -21,14 +21,14 @@ for(let heartbtn of heartbtns){
 }
 // হার্ট কাউন্টিনিং সেকশন শেষ**************************************************
 
+
 // হিস্টোরি এড এবং ক্লিয়ার এবং কয়েন কাউন্ট সেকশন শুরু****************************
 const calls = getElementClass("call")
 for(const call of calls){
-    call.addEventListener("click", function(){
-    const serviceName = getElementClass("servicename")
-    const serviceNumber = getElementClass("servicenumber")
-    console.log(serviceName)
-    console.log(serviceNumber)
+    call.addEventListener("click", function(e){
+    const card = e.currentTarget.closest(".card")
+    const serviceName = card.querySelector(".servicename").innerText
+    const serviceNumber = card.querySelector(".servicenumber").innerText
     const serviceTime = new Date().toLocaleString()
     const coinNumber = Number(getElement("coin").innerText)
     if(coinNumber < 20){
@@ -71,7 +71,9 @@ for(const call of calls){
 // কোড কাউন্ট হবে এবং কপি হবে এলার্ট সহ
 const copybtns = getElementClass("copybtn")
 for(const copybtn of copybtns){
-  copybtn.addEventListener("click", function(){
+    copybtn.addEventListener("click", function(e){
+      const card = e.currentTarget.closest(".card")
+      const serviceNumber = card.querySelector(".servicenumber").innerText
     const copyNumber = Number(getElement("copy-count").innerText);
     const currentCopyNumber = copyNumber + 1
 getElement("copy-count").innerText = currentCopyNumber;
