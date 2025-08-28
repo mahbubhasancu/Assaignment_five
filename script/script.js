@@ -1,58 +1,70 @@
+// ইলিমেন্ট এর জন্য ফাংশন
 function getElement(id) {
   const element = document.getElementById(id)
   return element;
 }
-// console.log(getElement("number"))
-//  const type = typeof heartNumber;
-//  console.log(type);
-// console.log(getInnerText("available-heart"));
 
-// for counting heart code
+
+// হার্ট কাউন্টিনিং সেকশন
 document.getElementById("heart-in-card").addEventListener("click", function(){
 const heartNumber = Number(getElement("available-heart").innerText);
 const currentHeartNumber = heartNumber + 1
 getElement("available-heart").innerText = currentHeartNumber;
 })
 
-// for history code
-const titleEmergency = getElement("title").innerText
-const numberEmergency = getElement("number").innerText
-const nowTime = new Date().toLocaleString()
+// হিস্টোরি এড এবং ক্লিয়ার এবং কয়েন কাউন্ট সেকশন
+const serviceName = getElement("service-name").innerText
+const serviceNumber = getElement("service-number").innerText
+const serviceTime = new Date().toLocaleString()
 document.getElementById("call-id").addEventListener("click", function(){
     const coinNumber = Number(getElement("coin").innerText)
     if(coinNumber < 20){
-    alert(`Not have enough coin for make a call to ${numberEmergency} of ${titleEmergency}`)
+    alert(`Not have enough <b>coin</b> for make a call to ${serviceNumber} of ${serviceName}`)
     }
+    // পর্যাপ্ত কয়েন না থাকলে উপরের সেকশন কাজ করবে
     else{
-        alert("20 coin will debited")
+        alert(`20 coin will be deducted for each call to ${serviceNumber} of ${serviceName}`)
         const currentCoinNumber = coinNumber - 20;
         getElement("coin").innerText = currentCoinNumber
+
+
         const historyContainer = getElement("history")
         const newHistory = document.createElement("div")
         newHistory.innerHTML = ` 
         <div id="removeingHistory" class="flex justify-between items-center bg-[#ecf8ec] m-2 p-2 rounded-[10px]">
             <div>
-              <h1>${titleEmergency}</h1>
-              <p>${numberEmergency}</p>
+              <h1>${serviceName}</h1>
+              <p>${serviceNumber}</p>
             </div>
-            <h1>${nowTime}</h1> 
+            <h1>${serviceTime}</h1> 
         </div>
           `
         historyContainer.append(newHistory);    
         }
+        //পর্যাপ্ত কয়েন সাপেক্ষে হিস্টোরিতে এড এবং কয়েন কমে যাবে 
   
 })
 
-// for copy code
+
+// হিস্টোরি ক্লিয়ার হয়ে যাবে 
+const divToRemove = getElement("history");
+document.getElementById("clearHistory").addEventListener("click", function(){
+divToRemove.remove();
+})
+
+
+// কোড কাউন্ট হবে এবং কপি হবে এলার্ট সহ
 document.getElementById("copy-id").addEventListener("click", function(){
 const copyNumber = Number(getElement("copy-count").innerText);
 const currentCopyNumber = copyNumber + 1
 getElement("copy-count").innerText = currentCopyNumber;
-})
 
-// for clear history code
-const divToRemove = getElement("removeingHistory");
-document.getElementById("clearHistory").addEventListener("click", function(){
-document.getElementById("removeingHistory").outerHTML = "";
-})
+navigator.clipboard.writeText(`${serviceNumber}`).then(() => {
+  alert(`Copied! ${serviceNumber}`);
+  /* text copied to clipboard successfully */
+},() => {
+  console.error('Failed to copy');
+  /* text failed to copy to the clipboard */
+});
 
+})
