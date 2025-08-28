@@ -19,22 +19,22 @@
 </head>
 <body>
   <header class="w-full">
-    <nav class=" sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row flex justify-between items-center h-[100px] mx-auto container">
+    <nav class="flex-col md:flex-row flex justify-between items-center h-[100px] mx-auto container">
       <div class="left-div flex gap-3">
         <img class="w-[50px]" src="assets/logo.png" alt="">
         <h1 class="text-[#006747] font-bold">Emergency <br> Service</h1>
       </div>
       <div class="right-div flex gap-3">
         <div class="h-[52px] w-[123px] bg-[#ECFFF0] rounded-4xl flex justify-center gap-2.5 items-center">
-             <h1>0</h1>
+             <span id="available-heart">0</span>
              <img class="h-6" src="assets/heart.png" alt="">
         </div>
         <div class="h-[52px] w-[123px] bg-[#ECFFF0] rounded-4xl flex justify-center gap-2.5 items-center">
-             <h1>100</h1>
+             <h1 id="coin">100</h1>
              <img class="h-6" src="assets/coin.png" alt="">
         </div>
         <div class="h-[52px] w-[123px] bg-[#00A63E] rounded-4xl flex justify-center gap-2.5 items-center text-white">
-             <h1>0</h1><p>Copy</p>
+             <h1 id="copy-count">0</h1><p>Copy</p>
         </div>
       </div>
     </nav>
@@ -52,24 +52,24 @@
               <div class="card bg-base-100 shadow p-3">
                 <div class="flex justify-between">
                   <img class="h-9 bg-red-200 rounded-[10px] p-2" src="assets/emergency.png" alt="">
-                  <button><i class="fa-regular fa-heart text-[20px]"></i></button>
+                  <button id="heart-in-card"><i class="fa-regular fa-heart text-[20px]"></i></button>
                 </div>
                 <div>
                   <h1 class="text-[18px] font-bold mt-5">National Emergency Number</h1>
-                  <p class="text-[16px]">National Emergency</p>
-                  <h1 class="text-[15px] font-bold mt-5 mb-2">999</h1>
+                  <p id="title" class="text-[16px]">National Emergency</p>
+                  <h1 id ="number" class="text-[15px] font-bold mt-5 mb-2">999</h1>
                   <h2 class="bg-[#d6d8d6] rounded-[10px] p-1 inline text-[14px]">All</h2>
                 </div>
                 <div class="flex justify-between mt-5">
-                  <button class="btn btn-xs sm:btn-sm md:btn-md"><i class="fa fa-clone" aria-hidden="true"></i>Copy</button>
-                  <button class="btn bg-[#00A63E] text-white"><i class="fa fa-phone" aria-hidden="true"></i>Call</button>
+                  <button id="copy-id" class="btn btn-xs sm:btn-sm md:btn-md"><i class="fa fa-clone" aria-hidden="true"></i>Copy</button>
+                  <button id="call-id" class="btn bg-[#00A63E] text-white"><i class="fa fa-phone" aria-hidden="true"></i>Call</button>
                 </div>
               </div>
               <!-- card 2  -->
               <div class="card bg-base-100 shadow p-3">
                 <div class="flex justify-between">
                   <img class="h-9 bg-blue-200 rounded-[10px] p-2" src="assets/police.png" alt="">
-                  <button><i class="fa-regular fa-heart text-[20px]"></i></button>
+                  <button id="heart-in-card"><i class="fa-regular fa-heart text-[20px]"></i></button>
                 </div>
                 <div>
                   <h1 class="text-[18px] font-bold mt-5">Police Helpline Number</h1>
@@ -204,19 +204,12 @@
             </div>
         </section>
 
-        <aside id="" class=" right-div col-span-3 bg-white rounded-[10px]">
+        <aside id="history" class=" right-div col-span-3 bg-white rounded-[10px]">
           <div class="flex justify-between items-center p-2">
             <h2 class="font-bold">
               <i class="fa-solid fa-clock-rotate-left"></i> History
             </h2>
-            <button class="h-[40px] w-[80px] bg-[#00A63E] rounded-4xl text-white">Clear</button>
-          </div>
-          <div class="flex justify-between items-center bg-[#ecf8ec] m-2 p-2 rounded-[10px]">
-            <div>
-              <h1>Emergency Number</h1>
-              <p>999</p>
-            </div>
-            <h1>Time</h1> 
+            <button id="clearHistory" class="h-[40px] w-[80px] bg-[#00A63E] rounded-4xl text-white">Clear</button>
           </div>
         </aside>
       </section>
