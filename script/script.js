@@ -88,18 +88,3 @@ navigator.clipboard.writeText(`${serviceNumber}`).then(() => {
   })
 }
 
-// id diye copy korar code
-// document.getElementById("copy-id").addEventListener("click", function(){
-// const copyNumber = Number(getElement("copy-count").innerText);
-// const currentCopyNumber = copyNumber + 1
-// getElement("copy-count").innerText = currentCopyNumber;
-
-// navigator.clipboard.writeText(`${serviceNumber}`).then(() => {
-//   alert(`Copied! ${serviceNumber}`);
-//   /* text copied to clipboard successfully */
-// },() => {
-//   console.error('Failed to copy');
-//   /* text failed to copy to the clipboard */
-// });
-
-// })
