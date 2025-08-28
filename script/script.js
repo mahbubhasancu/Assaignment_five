@@ -1,29 +1,42 @@
-// ইলিমেন্ট এর জন্য ফাংশন
+// আইডি থেকে ইলিমেন্ট বের করার জন্য ফাংশন
 function getElement(id) {
   const element = document.getElementById(id)
   return element;
 }
+//ক্লাস থেকে ইলিমেন্ট বের করার ফাংশন
+function getElementClass(classes) {
+  const elements = document.getElementsByClassName(classes)
+  return elements;
+}
 
 
-// হার্ট কাউন্টিনিং সেকশন
-document.getElementById("heart-in-card").addEventListener("click", function(){
-const heartNumber = Number(getElement("available-heart").innerText);
-const currentHeartNumber = heartNumber + 1
-getElement("available-heart").innerText = currentHeartNumber;
-})
+// হার্ট কাউন্টিনিং সেকশন শুরু*****************************************************
+const heartbtns = getElementClass("heartbutton")
+for(let heartbtn of heartbtns){
+  heartbtn.addEventListener("click", function(){
+    const heartNumber = Number(getElement("available-heart").innerText);
+    const currentHeartNumber = heartNumber + 1
+    getElement("available-heart").innerText = currentHeartNumber;
+  })
+}
+// হার্ট কাউন্টিনিং সেকশন শেষ**************************************************
 
-// হিস্টোরি এড এবং ক্লিয়ার এবং কয়েন কাউন্ট সেকশন
-const serviceName = getElement("service-name").innerText
-const serviceNumber = getElement("service-number").innerText
-const serviceTime = new Date().toLocaleString()
-document.getElementById("call-id").addEventListener("click", function(){
+// হিস্টোরি এড এবং ক্লিয়ার এবং কয়েন কাউন্ট সেকশন শুরু****************************
+const calls = getElementClass("call")
+for(const call of calls){
+    call.addEventListener("click", function(){
+    const serviceName = getElementClass("servicename").innerText
+    const serviceNumber = getElementClass("servicenumber").innerText
+    console.log(serviceName)
+    console.log(serviceNumber)
+    const serviceTime = new Date().toLocaleString()
     const coinNumber = Number(getElement("coin").innerText)
     if(coinNumber < 20){
-    alert(`Not have enough <b>coin</b> for make a call to ${serviceNumber} of ${serviceName}`)
+    alert(`Not have enough coin for make a call to ${serviceNumber} of ${serviceName}`)
     }
     // পর্যাপ্ত কয়েন না থাকলে উপরের সেকশন কাজ করবে
     else{
-        alert(`20 coin will be deducted for each call to ${serviceNumber} of ${serviceName}`)
+        alert(`20 coin will be deducted for each call Now Calling to ${serviceNumber} of ${serviceName}`)
         const currentCoinNumber = coinNumber - 20;
         getElement("coin").innerText = currentCoinNumber
 
@@ -43,20 +56,24 @@ document.getElementById("call-id").addEventListener("click", function(){
         }
         //পর্যাপ্ত কয়েন সাপেক্ষে হিস্টোরিতে এড এবং কয়েন কমে যাবে 
   
-})
+  })
+    // হিস্টোরি ক্লিয়ার হয়ে যাবে 
+  const divToRemove = getElement("history");
+  document.getElementById("clearHistory").addEventListener("click", function(){
+  divToRemove.remove();
+      })
+}
+ 
+// হিস্টোরি এড এবং ক্লিয়ার এবং কয়েন কাউন্ট সেকশন শেষ******************************
 
-
-// হিস্টোরি ক্লিয়ার হয়ে যাবে 
-const divToRemove = getElement("history");
-document.getElementById("clearHistory").addEventListener("click", function(){
-divToRemove.remove();
-})
 
 
 // কোড কাউন্ট হবে এবং কপি হবে এলার্ট সহ
-document.getElementById("copy-id").addEventListener("click", function(){
-const copyNumber = Number(getElement("copy-count").innerText);
-const currentCopyNumber = copyNumber + 1
+const copybtns = getElementClass("copybtn")
+for(const copybtn of copybtns){
+  copybtn.addEventListener("click", function(){
+    const copyNumber = Number(getElement("copy-count").innerText);
+    const currentCopyNumber = copyNumber + 1
 getElement("copy-count").innerText = currentCopyNumber;
 
 navigator.clipboard.writeText(`${serviceNumber}`).then(() => {
@@ -66,5 +83,21 @@ navigator.clipboard.writeText(`${serviceNumber}`).then(() => {
   console.error('Failed to copy');
   /* text failed to copy to the clipboard */
 });
+  })
+}
 
-})
+// id diye copy korar code
+// document.getElementById("copy-id").addEventListener("click", function(){
+// const copyNumber = Number(getElement("copy-count").innerText);
+// const currentCopyNumber = copyNumber + 1
+// getElement("copy-count").innerText = currentCopyNumber;
+
+// navigator.clipboard.writeText(`${serviceNumber}`).then(() => {
+//   alert(`Copied! ${serviceNumber}`);
+//   /* text copied to clipboard successfully */
+// },() => {
+//   console.error('Failed to copy');
+//   /* text failed to copy to the clipboard */
+// });
+
+// })
