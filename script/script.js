@@ -25,8 +25,8 @@ for(let heartbtn of heartbtns){
 const calls = getElementClass("call")
 for(const call of calls){
     call.addEventListener("click", function(){
-    const serviceName = getElementClass("servicename").innerText
-    const serviceNumber = getElementClass("servicenumber").innerText
+    const serviceName = getElementClass("servicename")
+    const serviceNumber = getElementClass("servicenumber")
     console.log(serviceName)
     console.log(serviceNumber)
     const serviceTime = new Date().toLocaleString()
