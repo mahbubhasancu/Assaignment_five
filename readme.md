@@ -2,11 +2,8 @@
 
 **Answer**: The four type selectors are used to select an element in the DOM in JavaScript.
     (1) getElementById is a unique element selector.
-
     (2) getElementsByClassName is a collection of element with same class name.representing in a array form.
-
     (3) querySelector select the frist element of given class name.
-
     (4) querySwlwctorAll select total element with class name, tag name or valid css. It is return nodelist and more flexible then getElementsByClassName.
 
 ## ============================================================================
@@ -14,13 +11,9 @@
 2. How do you **create and insert a new element into the DOM**?
 
 **Answer**: Usaully I use this methods to create element in DOM.
-
     (1)document.createElement("p"); it creates a paragraph tag.
-
 I know this two methods for inserting an element in DOM
-
     (2)parentDiv.appendChild(newDiv) to add the new element as the last child of a parent element.
-
     (3)parentDiv.append(newDiv) it creats a new div inside parent div. Usually i use it.
 
 ## ============================================================================
