@@ -32,11 +32,11 @@ for(const call of calls){
     const serviceTime = new Date().toLocaleString()
     const coinNumber = Number(getElement("coin").innerText)
     if(coinNumber < 20){
-    alert(`Not have enough coin for make a call to ${serviceNumber} of ${serviceName}`)
+    alert(`Not have enough coin, need minimum 20 coin to make a call.`)
     }
     // পর্যাপ্ত কয়েন না থাকলে উপরের সেকশন কাজ করবে
     else{
-        alert(`20 coin will be deducted for each call Now Calling to ${serviceNumber} of ${serviceName}`)
+        alert(`Calling ${serviceName} Service ${serviceNumber}...`)
         const currentCoinNumber = coinNumber - 20;
         getElement("coin").innerText = currentCoinNumber
 
@@ -79,7 +79,7 @@ for(const copybtn of copybtns){
 getElement("copy-count").innerText = currentCopyNumber;
 
 navigator.clipboard.writeText(`${serviceNumber}`).then(() => {
-  alert(`Copied! ${serviceNumber}`);
+  alert(`Number is Copied! ${serviceNumber}`);
   /* text copied to clipboard successfully */
 },() => {
   console.error('Failed to copy');
